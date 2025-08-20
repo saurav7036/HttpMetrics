@@ -1,4 +1,6 @@
 using Amazon.Lambda.ApplicationLoadBalancerEvents;
+using Amazon.Lambda.Core;
+using HttpMetrics;
 
 [assembly: Amazon.Lambda.Core.LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
@@ -11,7 +13,15 @@ public class Function
     static Function()
     {
         // Initialize HttpMetrics using environment configuration
-        ClientHttpMetrics.StartFromEnvironment();
+        MetricOption metricOption = new MetricOption
+        {
+            AllowedHosts = new[] { "api.stripe.com" },
+            Routes = new[] // Example routes
+            {
+                new Route { Template = "/health", Name = "HealthCheck" }
+            }
+        };
+        ClientHttpMetrics.Start(metricOption);
     }
 
     /// <summary>
@@ -21,8 +31,7 @@ public class Function
     public async Task<ApplicationLoadBalancerResponse> FunctionHandler(ApplicationLoadBalancerRequest request, ILambdaContext context)
     {
         // Perform a simple HTTP GET to generate metrics
-        await _httpClient.GetAsync("https://example.com");
-
+        await _httpClient.GetAsync("https://api.stripe.com/health");
         var response = new ApplicationLoadBalancerResponse
         {
             StatusCode = 200,
