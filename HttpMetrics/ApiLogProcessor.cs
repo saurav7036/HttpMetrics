@@ -1,4 +1,5 @@
 using OpenTelemetry;
+using OpenTelemetry.Trace;
 using System.Diagnostics;
 
 namespace HttpMetrics
@@ -27,18 +28,20 @@ namespace HttpMetrics
             var route = RouteMatcher.TryMatch(_opt.Routes, url);
             if (route is null) return; // your “only log when mapped” rule
 
+            // Build the same model your current logger expects
             var data = new PerformanceMetricData
             {
-                Url = url,
+                Url        = url,
                 HttpMethod = (a.GetTagItem("http.method") as string) ?? "GET",
-                Duration = a.Duration.TotalMilliseconds,
-                ApiName = route.Name,
-                IsSuccess = GetIsSuccess(a),
+                Duration   = a.Duration.TotalMilliseconds,
+                ApiName    = route.Name,
+                IsSuccess  = GetIsSuccess(a),
                 CorrelationId = a.TraceId.ToString(),
+                // StartTime optional: DateTime.UtcNow.AddMilliseconds(-a.Duration.TotalMilliseconds)
             };
 
-            MetricSnapshotContext.Add(data); 
-            PerfMetricLogger.LogPerfMetricData(data);
+            // Call the SAME logging logic
+            PerfMetricLogger.LogPerfMetricData(data); // see section B
         }
 
         private static bool GetIsSuccess(Activity a)
