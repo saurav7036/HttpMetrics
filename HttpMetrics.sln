@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMetrics", "HttpMetrics\HttpMetrics.csproj", "{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMetricsLambda", "HttpMetricsLambda\HttpMetricsLambda.csproj", "{D2393992-0B48-4C48-A9C6-5FA40506018E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,20 +16,32 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x64.Build.0 = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x86.Build.0 = Debug|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x64.ActiveCfg = Release|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x64.Build.0 = Release|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x86.ActiveCfg = Release|Any CPU
-		{C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x86.Build.0 = Release|Any CPU
-	EndGlobalSection
+        GlobalSection(ProjectConfigurationPlatforms) = postSolution
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x64.ActiveCfg = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x64.Build.0 = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x86.ActiveCfg = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Debug|x86.Build.0 = Debug|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x64.ActiveCfg = Release|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x64.Build.0 = Release|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x86.ActiveCfg = Release|Any CPU
+                {C4D82FD1-5D55-472E-B93B-5BE8200F9E5C}.Release|x86.Build.0 = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|x64.ActiveCfg = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|x64.Build.0 = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|x86.ActiveCfg = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Debug|x86.Build.0 = Debug|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|Any CPU.Build.0 = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x64.ActiveCfg = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x64.Build.0 = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x86.ActiveCfg = Release|Any CPU
+                {D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x86.Build.0 = Release|Any CPU
+        EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
