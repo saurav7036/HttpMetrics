@@ -1,11 +1,6 @@
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Amazon.Lambda.Core;
 using Amazon.Lambda.ApplicationLoadBalancerEvents;
-using HttpMetrics;
 
-[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
+[assembly: Amazon.Lambda.Core.LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
 namespace HttpMetricsLambda;
 
