@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMetrics", "HttpMetrics\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMetricsLambda", "HttpMetricsLambda\HttpMetricsLambda.csproj", "{D2393992-0B48-4C48-A9C6-5FA40506018E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpMetricsTests", "HttpMetricsTests\HttpMetricsTests.csproj", "{CE658254-99EF-4E81-9E4A-975232A7E3A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x64.Build.0 = Release|Any CPU
 		{D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x86.ActiveCfg = Release|Any CPU
 		{D2393992-0B48-4C48-A9C6-5FA40506018E}.Release|x86.Build.0 = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Debug|x86.Build.0 = Debug|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|x64.Build.0 = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE658254-99EF-4E81-9E4A-975232A7E3A6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

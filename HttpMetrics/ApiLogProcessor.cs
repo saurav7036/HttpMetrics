@@ -1,3 +1,4 @@
+using HttpMetrics.Interfaces;
 using OpenTelemetry;
 using System.Diagnostics;
 
@@ -6,8 +7,14 @@ namespace HttpMetrics
     internal sealed class ApiLogProcessor : BaseProcessor<Activity>
     {
         private readonly MetricOption _opt;
+        private readonly IMetricBuffer _buffer;
 
-        public ApiLogProcessor(MetricOption opt) => _opt = opt;
+
+        public ApiLogProcessor(MetricOption opt, IMetricBuffer buffer)
+        {
+            _opt = opt;
+            _buffer = buffer;
+        }
 
         public override void OnEnd(Activity a)
         {
@@ -42,52 +49,19 @@ namespace HttpMetrics
                 CorrelationId = a.TraceId.ToString(),
                 StartTime = a.StartTimeUtc,
             };
-            MetricSnapshotContext.Add(data);
+            _buffer.Add(data);
             PerfMetricLogger.LogPerfMetricData(data);
         }
 
         private static Uri? GetUrl(Activity a)
         {
-            // New semantic key first
-            var s = (a.GetTagItem("url.full") as string)
-                 ?? (a.GetTagItem("http.url") as string);
-
-            if (!string.IsNullOrEmpty(s) && Uri.TryCreate(s, UriKind.Absolute, out var u))
-                return u;
-
-            return TryReconstructUrl(a);
-        }
-
-        private static Uri? TryReconstructUrl(Activity a)
-        {
-            var scheme = (a.GetTagItem("url.scheme") as string)
-                      ?? (a.GetTagItem("http.scheme") as string)
-                      ?? "http";
-
-            var host = (a.GetTagItem("server.address") as string)
-                    ?? (a.GetTagItem("net.peer.name") as string)
-                    ?? (a.GetTagItem("net.peer.ip") as string);
-
-            var portStr = (a.GetTagItem("server.port") as string)
-                       ?? (a.GetTagItem("net.peer.port") as string);
-
-            var path = (a.GetTagItem("url.path") as string)
-                    ?? (a.GetTagItem("http.target") as string)
-                    ?? "/";
-
-            var query = (a.GetTagItem("url.query") as string)?.TrimStart('?') ?? "";
-
-            if (string.IsNullOrEmpty(host)) return null;
-
-            _ = int.TryParse(portStr, out var port);
-            var ub = new UriBuilder(scheme, host, port == 0 ? -1 : port, path) { Query = query };
-            return ub.Uri;
+            var s = a.GetTagItem("url.full") as string;
+            return Uri.TryCreate(s, UriKind.Absolute, out var u) ? u : null;
         }
 
         private static string? GetMethod(Activity a)
         {
-            return (a.GetTagItem("http.request.method") as string)
-                ?? (a.GetTagItem("http.method") as string);
+            return a.GetTagItem("http.request.method") as string;
         }
 
         private static bool GetIsSuccess(Activity a)
